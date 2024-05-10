@@ -7,6 +7,10 @@ function SplashPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    initializeBestScores(setBestScores);
+  }, []);
+
+  function initializeBestScores(setBestScores) {
     const savedBestScores = localStorage.getItem('bestScores');
 
     if (savedBestScores) {
@@ -24,7 +28,7 @@ function SplashPage() {
       setBestScores(initialBestScores);
       localStorage.setItem('bestScores', JSON.stringify(initialBestScores));
     }
-  }, []);
+  }
 
   function handleQuestionChange(e) {
     setSelectedQuestion(Number(e.target.value));
@@ -35,6 +39,7 @@ function SplashPage() {
       navigate('/countdown', { state: { questionAmount: selectedQuestion } });
     }
   }
+
   return (
     <div className='card splash-page'>
       <form className='start-form'>
