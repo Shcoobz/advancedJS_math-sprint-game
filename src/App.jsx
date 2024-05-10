@@ -3,6 +3,7 @@ import Header from './components/Header';
 import SplashPage from './components/pages/SplashPage';
 import CountdownPage from './components/pages/CountdownPage';
 import GamePage from './components/pages/GamePage';
+import ScorePage from './components/pages/ScorePage';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path='/' element={<SplashPage />} />
           <Route path='/countdown' element={<CountdownPage />} />
           <Route path='/game' element={<GamePage />} />
+          <Route path='/score' element={<ScorePage />} />
         </Routes>
       </div>
     </Router>
