@@ -1,10 +1,10 @@
-# react_Math Sprint Game: [LIVE DEMO](XXX)
+# react_Math Sprint Game: [LIVE DEMO](https://shcoobz.github.io/react_math-sprint-game/)
 
-![react_math-sprint-game](img/react_math-sprint-game.png)
+![react_math-sprint-game](assets/react_math-sprint-game.png)
 
 ## Summary
 
-react_math-sprint-game provides a dynamic web-based platform where users can improve their math skills through timed questions. It features a user-friendly interface, various difficulty levels, and the ability to track personal best scores.
+react_Math Sprint Game provides a dynamic web-based platform where users can improve their math skills through timed questions. It features a user-friendly interface, various difficulty levels, and the ability to track personal best scores.
 
 The core functionality includes:
 
@@ -40,4 +40,6 @@ The application tracks the user's time for answering questions correctly, adding
 
 ---
 
-_Note: This document provides an overview of react_math-sprint-game. For detailed instructions and more information, please refer to the source code documentation._
+_Note: This document provides an overview of react_Math Sprint Game. For detailed instructions and more information, please refer to the source code documentation._
+
+_This project is a conversion from an earlier version built with vanilla JavaScript and HTML, available [here](https://github.com/Shcoobz/basicJS_math-sprint-game). This conversion integrates React to enhance UI reactivity and maintainability._
