@@ -14,7 +14,8 @@
   "homepage": "https://shcoobz.github.io/react_math-sprint-game/",
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.23.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

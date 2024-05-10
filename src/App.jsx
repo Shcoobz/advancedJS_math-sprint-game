@@ -1,8 +1,13 @@
+import { BrowserRouter as Router } from 'react-router-dom';
+import Header from './components/Header';
+
 function App() {
   return (
-    <div className='App'>
-      <h1>Hello</h1>
-    </div>
+    <Router basename='/react_math-sprint-game'>
+      <div className='game-container'>
+        <Header />
+      </div>
+    </Router>
   );
 }
 
