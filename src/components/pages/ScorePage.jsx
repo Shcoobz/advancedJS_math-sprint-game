@@ -7,6 +7,10 @@ function ScorePage() {
   const { timePlayed, penaltyTime, finalTime, questionAmount } = location.state;
 
   useEffect(() => {
+    updateBestScoresInLocalStorage(questionAmount, finalTime);
+  }, [questionAmount, finalTime]);
+
+  function updateBestScoresInLocalStorage(questionAmount, finalTime) {
     const bestScores = JSON.parse(localStorage.getItem('bestScores')) || [];
     const index = bestScores.findIndex((score) => score.questions === questionAmount);
 
@@ -21,7 +25,7 @@ function ScorePage() {
     }
 
     localStorage.setItem('bestScores', JSON.stringify(bestScores));
-  }, [questionAmount, finalTime]);
+  }
 
   function handlePlayAgain() {
     navigate('/');
