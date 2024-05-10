@@ -8,6 +8,14 @@ function CountdownPage() {
   const questionAmount = location.state?.questionAmount;
 
   useEffect(() => {
+    return startCountdown(setCountdown);
+  }, []);
+
+  useEffect(() => {
+    navigateToGamePageWhenCountdownZero(countdown, navigate, questionAmount);
+  }, [countdown, navigate, questionAmount]);
+
+  function startCountdown(setCountdown) {
     const timer = setInterval(() => {
       setCountdown((prevCountdown) => prevCountdown - 1);
     }, 1000);
@@ -15,15 +23,15 @@ function CountdownPage() {
     return () => {
       clearInterval(timer);
     };
-  }, []);
+  }
 
-  useEffect(() => {
+  function navigateToGamePageWhenCountdownZero(countdown, navigate, questionAmount) {
     if (countdown === 0) {
       setTimeout(() => {
         navigate('/game', { state: { questionAmount } });
       }, 1000);
     }
-  }, [countdown, navigate, questionAmount]);
+  }
 
   return (
     <div className='card countdown-page'>
