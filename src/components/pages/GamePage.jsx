@@ -1,18 +1,59 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
+/**
+ * GamePage component manages the gameplay interface. It generates mathematical equations, tracks user responses,
+ * calculates the time played, and applies penalties for incorrect answers. At the end of the game, it navigates to the score page.
+ */
 function GamePage() {
+  /**
+   * @const {Array<Object>} equationsArray - Stores generated equations for the game.
+   */
   const [equationsArray, setEquationsArray] = useState([]);
+
+  /**
+   * @const {Array<string>} playerGuessArray - Stores the player's guesses to track game progress.
+   */
   const [playerGuessArray, setPlayerGuessArray] = useState([]);
+
+  /**
+   * @const {number} timePlayed - Tracks the amount of time spent on the current game.
+   */
   const [timePlayed, setTimePlayed] = useState(0);
+
+  /**
+   * @const {number} penaltyTime - Adds time penalties for incorrect answers.
+   */
   const [penaltyTime, setPenaltyTime] = useState(0);
+
+  /**
+   * @const {Function} navigate - Hook to navigate programmatically between routes.
+   */
   const navigate = useNavigate();
+
+  /**
+   * @const {Object} location - Hook to access the location object from the router, used to pass state across routes.
+   */
   const location = useLocation();
+
+  /**
+   * @const {number} questionAmount - The number of questions to be answered, defaults to 10 if not specified.
+   */
   const questionAmount = location.state?.questionAmount || 10;
+
+  /**
+   * @const {Object} itemContainerRef - A ref object pointing to the container for smooth scrolling functionality.
+   */
   const itemContainerRef = useRef(null);
 
+  /**
+   * Effect hook for initializing and updating the game's time played.
+   */
   useEffect(updateTimePlayed, []);
 
+  /**
+   * Effect hook to populate equations on component mount or when question amount changes.
+   */
   useEffect(() => {
     function populateEquations(questionAmount) {
       let tempEquations = [];
@@ -33,6 +74,9 @@ function GamePage() {
     }
   }, [questionAmount, equationsArray]);
 
+  /**
+   * Effect hook to navigate to the score page when all questions have been answered.
+   */
   useEffect(navigateToScorePage, [
     playerGuessArray,
     questionAmount,
@@ -41,6 +85,10 @@ function GamePage() {
     navigate,
   ]);
 
+  /**
+   * Starts an interval to update the game's time played every 100 milliseconds.
+   * @returns {Function} Cleanup function to clear the interval timer.
+   */
   function updateTimePlayed() {
     const timer = setInterval(() => {
       setTimePlayed((prevTime) => prevTime + 0.1);
@@ -49,6 +97,9 @@ function GamePage() {
     return () => clearInterval(timer);
   }
 
+  /**
+   * Navigates to the score page when all questions are answered.
+   */
   function navigateToScorePage() {
     if (playerGuessArray.length === questionAmount) {
       const finalTime = timePlayed + penaltyTime;
@@ -64,6 +115,11 @@ function GamePage() {
     }
   }
 
+  /**
+   * Generates the specified number of correct mathematical equations.
+   * @param {number} correctEquations - Number of correct equations to generate.
+   * @returns {Array<Object>} An array of objects containing correct equations.
+   */
   function generateCorrectEquations(correctEquations) {
     const tempEquations = [];
 
@@ -79,6 +135,11 @@ function GamePage() {
     return tempEquations;
   }
 
+  /**
+   * Generates the specified number of incorrect mathematical equations.
+   * @param {number} wrongEquations - Number of incorrect equations to generate.
+   * @returns {Array<Object>} An array of objects containing incorrect equations.
+   */
   function generateIncorrectEquations(wrongEquations) {
     const tempEquations = [];
 
@@ -100,6 +161,10 @@ function GamePage() {
     return tempEquations;
   }
 
+  /**
+   * Shuffles the provided array using the Fisher-Yates algorithm.
+   * @param {Array} array - The array to shuffle.
+   */
   function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -107,6 +172,10 @@ function GamePage() {
     }
   }
 
+  /**
+   * Handles the user's selection for each equation, updating the guess array and applying penalty if wrong.
+   * @param {boolean} guessedTrue - Indicates whether the user guessed 'true' or 'false'.
+   */
   function handleSelect(guessedTrue) {
     setPlayerGuessArray((prevGuesses) => [
       ...prevGuesses,
@@ -122,6 +191,9 @@ function GamePage() {
     }, 500);
   }
 
+  /**
+   * Scrolls the view to the next equation in the list.
+   */
   function scrollToNextEquation() {
     if (itemContainerRef.current) {
       const itemHeight = 80;
