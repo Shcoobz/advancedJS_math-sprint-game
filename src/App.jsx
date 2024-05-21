@@ -15,7 +15,7 @@ function App() {
    * @returns {JSX.Element} - The React component that includes the Router, Header, and all defined Routes.
    */
   return (
-    <Router basename='/react_math-sprint-game'>
+    <Router basename='/advancedJS_math-sprint-game'>
       <div className='game-container'>
         <Header />
         <Routes>
