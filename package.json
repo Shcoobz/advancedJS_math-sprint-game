@@ -1,5 +1,5 @@
 {
-  "name": "react_math-sprint-game",
+  "name": "advancedJS_math-sprint-game",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,7 +11,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://shcoobz.github.io/react_math-sprint-game/",
+  "homepage": "https://shcoobz.github.io/advancedJS_math-sprint-game/",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

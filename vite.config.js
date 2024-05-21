@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/react_math-sprint-game/',
+  base: '/advancedJS_math-sprint-game/',
   build: {
     outDir: 'build',
   },
